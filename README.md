@@ -1,13 +1,13 @@
-<img src="https://www.gdgalgiers.com/static/gdg_algiers-86a26a90b5a8da9cdd3127750215f051.png" alt="GDG LOGO" >
+<img src="https://drive.google.com/file/d/1T95ShFb-t5b4pTPCAOtYzkttmhhd20cN/view?usp=sharing" alt="AutoPV logo" >
 <br>
 
-# templateJs
+# AutoPV BOT
 
 
-## What is it ? 
-it's a template for discord bots with the discordJs library 
+## Problem 
+we, as an inspired future engineers, thought of making writing PVs more flexible and fast through developing a discord bot named “AutoPV”.
 
-## how to use it ?
+## how to set the bot ?
 
 * First you have to colone this repo 
  ```git
@@ -27,7 +27,8 @@ it's a template for discord bots with the discordJs library
 ```npm
 npm install 
   ```
-* finaly , run the bot.js file 
+* run the bot.js file 
 ```node
 node src/bot.js 
   ```
+  
