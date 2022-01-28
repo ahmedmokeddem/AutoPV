@@ -14,7 +14,10 @@ module.exports = {
     async execute(client, interaction, args) {
 
         const file_name = interaction.options.getString('file_name');
-        if (file_name === undefined) { await interaction.reply("Please enter a valide file name !"); return; }
+        if (file_name !== "pv_template") {
+            await interaction.reply("Currently there is only the template file, please use pv_template as file_name!");
+            return;
+        }
         await interaction.deferReply();
         await interaction.editReply({
             embeds: [new discord.MessageEmbed()
@@ -22,17 +25,19 @@ module.exports = {
                 .setColor('RANDOM')
             ]
         });
-        let file = await uploadFile(file_name);
-
         let files = read_files();
-        files[file.name] = file.id;
-        console.log(files);
-        write_files(files);
-        let link = await generateUrl(file.id);
+        let file;
+        if (files[file_name] === undefined) {
+            file = await uploadFile(file_name);
+            files[file.name] = file.id;
+            write_files(files);
+        }
+
+        let link = await generateUrl(files[`${file_name}.docx`]);
         const embed1 = new discord.MessageEmbed()
             .setDescription(`The PV **${file_name}** has been successfully uploaded to drive`)
             .setAuthor({ name: 'AutoPV', iconURL: 'https://i.ibb.co/rmGcG0Y/GDG-2-removebg-preview.jpg' })
-            .setTitle(`${file.name}`)
+            .setTitle(`${file_name}.docx`)
             .setURL(`${link.webContentLink}`)
             .setColor('GREEN');
 

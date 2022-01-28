@@ -28,7 +28,6 @@ async function uploadFile(pv_name) {
                 body: fs.createReadStream(filePath),
             },
         });
-        console.log(response.data);
         return response.data;
     } catch (error) {
         console.log(error);
