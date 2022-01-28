@@ -1,4 +1,4 @@
-<img src="https://drive.google.com/file/d/1T95ShFb-t5b4pTPCAOtYzkttmhhd20cN/view?usp=sharing" alt="AutoPV logo" >
+<img src="https://i.ibb.co/z5CCZQg/GDG-2.png" alt="AutoPV logo" >
 <br>
 
 # AutoPV BOT
