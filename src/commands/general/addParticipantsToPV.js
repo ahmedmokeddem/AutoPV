@@ -1,10 +1,11 @@
 const discord = require("discord.js");
 const { SlashCommandBuilder } = require("@discordjs/builders");
+const fileContent = require("src\template\file_content.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("add_participants_topv")
-    .setDescription("description"),
+    .setDescription("Add participants to the PV"),
   async execute(client, interaction, args) {
     const voiceChanelMembers =
       interaction.member.voice.channel?.members?.values();
@@ -16,6 +17,13 @@ module.exports = {
       membersUsernames.push(member.user.username);
     }
     const participants = membersUsernames.join("\n");
-    await interaction.reply(participants);
+    fileContent.participants = participants;
+    const embed1 = new discord.MessageEmbed()
+      .setDescription("Participants added successfully ")
+      .setColor("GREEN");
+
+    await interaction.reply({
+      embeds: [embed1],
+    });
   },
 };
