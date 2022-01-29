@@ -30,7 +30,8 @@
         "discord-api-types": "^0.26.1",
         "discord.js": "^13.6.0",
         "dotenv": "^14.3.2",
-        "googleapis": "^92.0.0"
+        "googleapis": "^92.0.0",
+        "nanoid": "^3.2.0"
     },
     "directories": {
         "test": "test"
