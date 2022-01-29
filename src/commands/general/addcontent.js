@@ -1,14 +1,17 @@
 const discord = require("discord.js");
 const { SlashCommandBuilder } = require("@discordjs/builders");
 
-const fileContent = require("src\template\file_content.js");
+const fileContent = require("../../template/files_content.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("addcontenttopv")
     .setDescription(" Add content to the PV ")
     .addStringOption((option) =>
-      option.setName("pvname").setDescription("add pv name ").setRequired(true)
+      option
+        .setName("pvname")
+        .setDescription(" the name of the pv to add the content to ")
+        .setRequired(true)
     )
     .addStringOption((option) =>
       option
@@ -19,8 +22,12 @@ module.exports = {
 
   async execute(client, interaction, args) {
     const content = interaction.options.getString("content");
+    const pvName = interaction.options.getString("pvname");
 
-    fileContent.content = content;
+    if (!fileContent[pvName])
+      return await interaction.reply("pv name doesn't exist!");
+
+    fileContent[pvName].content = content;
 
     const embed1 = new discord.MessageEmbed()
       .setDescription("content added succesfully")
