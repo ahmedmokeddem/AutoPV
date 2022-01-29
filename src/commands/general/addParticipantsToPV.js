@@ -20,7 +20,7 @@ module.exports = {
       interaction.member.voice.channel?.members?.values();
     const participants = [];
     if (!voiceChanelMembers) {
-      return await interaction.reply("no one is in the voice channel!");
+      return await interaction.reply("please join a voice channel first!");
     }
     for (let member of voiceChanelMembers) {
       participants.push(member.user.username);

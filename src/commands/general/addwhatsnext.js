@@ -5,33 +5,27 @@ const fileContent = require("../../template/files_content.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("addcontenttopv")
-    .setDescription(" Add content to the PV ")
+    .setName("add_whats_next")
+    .setDescription(" Add points to be discussed next meeting  ")
     .addStringOption((option) =>
-      option
-        .setName("pvname")
-        .setDescription(" the name of the pv to add the content to ")
-        .setRequired(true)
+      option.setName("pvname").setDescription("add pv name ").setRequired(true)
     )
     .addStringOption((option) =>
       option
-        .setName("content")
-        .setDescription("add your content")
+        .setName("points")
+        .setDescription("add whats next ")
         .setRequired(true)
     ),
 
   async execute(client, interaction, args) {
-    const content = interaction.options.getString("content");
+    const points = interaction.options.getString("points");
     const pvName = interaction.options.getString("pvname");
-    //if the file name doesn't exist
     if (!fileContent[pvName])
       return await interaction.reply("pv name doesn't exist!");
-    //set the constent prop
-    fileContent[pvName].content = content;
+    fileContent[pvName].whats_next = points;
 
-    //reply
     const embed1 = new discord.MessageEmbed()
-      .setDescription("content added succesfully")
+      .setDescription("what's next added succesfully")
       .setColor("GREEN");
 
     await interaction.reply({

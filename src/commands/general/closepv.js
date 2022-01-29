@@ -1,5 +1,6 @@
 const discord = require("discord.js");
 const { SlashCommandBuilder } = require("@discordjs/builders");
+const fileContent = require("../../template/files_content.js");
 const {
   uploadFile,
   read_files,
@@ -20,14 +21,12 @@ module.exports = {
     }),
   async execute(client, interaction, args) {
     const file_name = interaction.options.getString("file_name");
-    /*if (file_name !== "pv_template") {
-      await interaction.reply(
-        "Currently there is only the template file, please use pv_template as file_name!"
-      );
-      //return;
-    }*/
-    //render the pv file
+
     await interaction.deferReply();
+    //if the file name doesn't exist
+    if (!fileContent[file_name])
+      return await interaction.reply("pv name doesn't exist!");
+    //render the pv file
     renderFile(file_name);
     await interaction.editReply({
       embeds: [
